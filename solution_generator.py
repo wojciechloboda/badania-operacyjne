@@ -3,6 +3,8 @@ from collections import deque
 from graph import RoomGraph
 from copy import deepcopy
 import random
+import itertools
+
 
 '''
 TABLES c = chair t = table
@@ -74,13 +76,10 @@ def select_table_placment(roomGraph:RoomGraph,table_type:int,orientation:str = N
     if orientation != 'h' and orientation != 'v':
         return None
     number_of_tries = 0
-    while True:
-        number_of_tries += 1
-        if number_of_tries > 100:
-            print('could not place table ',table_type,orientation,' after 100 tries')
-            return roomGraph
+    permutation = list(itertools.permutations(roomGraph.graph.keys()))
+    for placement in permutation:
         can_place = True
-        placement = random.choice(list(roomGraph.graph.keys()))
+        # placement = random.choice(list(roomGraph.graph.keys()))
         for node in NODES_TO_TABLE[(table_type,orientation)]:
             if (placement[0]+node[0],placement[1]+node[1]) in roomGraph.tables:
                 can_place = False
@@ -133,6 +132,8 @@ def select_table_placment(roomGraph:RoomGraph,table_type:int,orientation:str = N
         if can_place:
             roomGraph = new_roomGraph
             return roomGraph
+    print('could not place table')
+    return roomGraph
         
 
 
