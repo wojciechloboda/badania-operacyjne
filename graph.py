@@ -7,3 +7,4 @@ class RoomGraph:
         self.chairs = set()
         self.restricted = set()
         self.walls = set()
+        self.table_list = [] #(table_type, orientation, placement)
