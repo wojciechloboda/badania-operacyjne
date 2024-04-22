@@ -1,4 +1,6 @@
 from graph import RoomGraph
+from table_placer import place_table
+
 DOOR = '@'
 WALL = '#'
 EMPTY = ' '
@@ -17,7 +19,7 @@ def get_door(grid):
     return doors
 
 def in_grid(i, j, grid):
-    return i >= 0 and i < len(grid) and j >= 0 and j < len(grid[0])
+    return i >= 0 and i < len(grid) and j >= 0 and j < len(grid[i])
 
 def get_adj(i, j, grid):
     dirs = [(0, 1), (0, -1), (1, 0), (-1, 0)]
@@ -30,6 +32,14 @@ def get_adj(i, j, grid):
 def load_grid(path):
     with open(path) as f:
         grid = f.read().split('\n')
+    n=len(grid)-1
+    while True:
+        if len(grid[n])==0:
+            grid.pop()
+            n-=1
+        else:
+            break
+
     n = len(grid)
     m = len(grid[0])
     roomGraph = RoomGraph()
@@ -74,3 +84,25 @@ def save_grid(roomGraph, path):
     with open(path, 'w') as f:
         for row in grid:
             f.write(''.join(row) + '\n')
+
+def load_table_list(path):
+    with open(path, 'r') as f:
+        tables_repr = f.read().split('\n')
+    tables=[]
+    for table_repr in tables_repr:
+        table=table_repr.split(',')
+        if len(table)==4:
+            tables.append({"type": int(table[0]), "orientation":table[1].replace(" ", ""), "place":(int(table[2]), int(table[3]))})
+    return tables
+
+def save_table_list(table_list, path):
+    with open(path, 'w') as f:
+        for table in table_list:
+            f.write(f"{table['type']}, {table['orientation']}, {table['place'][0]}, {table['place'][1]}\n")
+
+def load_solution(graph_path, table_list_path):
+    table_list=load_table_list(table_list_path)
+    graph=load_grid(graph_path)
+    for table in table_list:
+        graph=place_table(graph, table["type"], table["orientation"], table["place"])
+    return graph
