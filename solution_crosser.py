@@ -16,7 +16,9 @@ def cross(mother:RoomGraph, father: RoomGraph, empty_graph: RoomGraph):
         child=place_table(child, gene["type"], gene["orientation"], gene["place"])
     for gene in father.table_list:
         if(possible_to_place(child, gene["type"], gene["orientation"], gene["place"])):
-            child=place_table(child, gene["type"], gene["orientation"], gene["place"])
+            new_child=place_table(child, gene["type"], gene["orientation"], gene["place"])
+            if(does_paths_to_doors_exist(new_child, gene["place"])):
+                child=new_child
     return child
 
 def mutate(child: RoomGraph):
