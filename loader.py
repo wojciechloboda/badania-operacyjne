@@ -45,10 +45,14 @@ def load_grid(path):
     roomGraph = RoomGraph()
     for i in range(0, n):
         for j in range(0, m):
-            if grid[i][j] != WALL:
-                roomGraph.graph[(i, j)] = get_adj(i, j, grid)
-            else:
+            if grid[i][j] == TABLE:
+                roomGraph.tables.add((i, j))
+            if grid[i][j] == CHAIR:
+                roomGraph.chairs.add((i, j))
+            if grid[i][j] == WALL:
                 roomGraph.walls.add((i, j))
+            else:
+                roomGraph.graph[(i, j)] = get_adj(i, j, grid)
 
     roomGraph.doors = get_door(grid)
     if roomGraph.doors is None:
@@ -78,9 +82,6 @@ def save_grid(roomGraph, path):
     for chair in roomGraph.chairs:
         i, j = chair
         grid[i - min_y][j - min_x] = CHAIR
-    # for restricted in roomGraph.restricted:
-    #     i, j = restricted
-    #     grid[i - min_y][j - min_x] = 'x'
     with open(path, 'w') as f:
         for row in grid:
             f.write(''.join(row) + '\n')
