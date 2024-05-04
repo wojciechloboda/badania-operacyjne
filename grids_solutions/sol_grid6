@@ -1,19 +1,19 @@
 ##########################################################
-#        CCC #####    CTTC            CTTC    CTTC       #
-#        TTT #####        CTTC        CTTC    CTTC       #
-#   CCC CTTTC#####        CTTC            CTTC           #
-#   TTT  TTT #####C  CCC         CTTC C       ############
-#  CTTTC CCC #####T  TTT              T  CTTC ############
-#   TTT CCC  #####T CTTTC C      C    T  CTTC ############
-#   CCC TTT       C  TTT  T    CTTTC  C       ############
-#      CTTTC         CCC  T    CTTTC     CCC  ############
-#       TTT               C    CTTTC     TTT  ############
-#       CCC     CC               C  CC  CTTTC  C         #
-#               TT     ###########  TT   TTT CTTTC  CTTC #
-#C   CC C       TT     ###########  TT   CCC CTTTC       #
-#T   TT T  CCC  CC  C  ###########  CC C     CTTTC    C  #
-#T   TT T  TTT    CTTTC###########     T       C    CTTTC#
-#C   CC C CTTTC   CTTTC###########     T CTTC       CTTTC#
-#          TTT    CTTTC###########CTTC C CTTC  CTTC CTTTC#
-#          CCC      C  ###########CTTC         CTTC   C  #
+#            #####                     CCC           CTTC#
+#       CCC  #####      CCC    CC      TTT           CTTC#
+#       TTT  #####      TTT    TT     CTTTC              #
+#      CTTTC #####     CTTTC   TT      TTT    ############
+#       TTT  #####      TTT    CC      CCC    ############
+#C   C  CCC  #####      CCC   C               ############
+#T   T                    CC  T              C############
+#T   T                    TT  T      CCC     T############
+#C   C                    TT  C      TTT     T############
+#                         CC        CTTTC    C           #
+#                      ###########   TTT           CCC   #
+#                      ###########   CCC           TTT   #
+#           C          ###########                CTTTC  #
+#     CTTC  T          ###########                 TTT   #
+#     CTTC  T          ###########                 CCC   #
+#           C          ###########             CTTC      #
+#                      ###########             CTTC      #
 ########@#################################################

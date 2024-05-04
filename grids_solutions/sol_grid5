@@ -1,19 +1,19 @@
 ##########################################################
-#            ##### CTTC       CCC         CTTC           #
-#C           #####            TTT         CTTC           #
-#T     C     #####  CCC      CTTTC   CC                  #
-#T   CTTTC   #####  TTT       TTT    TT  CTTC ############
-#C   CTTTC CC##### CTTTC  C   CCC    TT       ############
-#CC  CTTTC TT#####  TTT CTTTC        CC   CTTC############
-#TT    C   TT       CCC CTTTC                 ############
-#TT        CC           CTTTC       CCC       ############
-#CC         CC            C    CTTC TTT   CCC ############
-#           TT  CTTC CC            CTTTC  TTT    CCC     #
-#  C  CCC   TT  CTTC TT###########  TTT  CTTTC   TTT     #
-#  T  TTT   CC       TT###########  CCC   TTT   CTTTCCTTC#
-#  T CTTTC   C       CC###########   CC   CCC CC TTT CTTC#
-#  C  TTT  CTTTC CTTC  ###########   TT       TT CCC     #
-#     CCC  CTTTC       ###########   TT       TT         #
-#          CTTTC       ###########   CC       CC         #
-#    CTTC    C  CTTC   ###########      CTTC             #
+#            #####                      C      CTTC      #
+#            ##### CTTC               CTTTC    CTTC      #
+# CCC        #####        CCC         CTTTC              #
+# TTT        #####        TTT         CTTTC   ############
+#CTTTC       #####       CTTTC   CTTC   C     ############
+# TTT        #####   C    TTT                 ############
+# CCC              CTTTC  CCC   C             ############
+#    CC            CTTTC        T    CC       ############
+#    TT            CTTTC        T    TT       ############
+#    TT              C          C    TT              CTTC#
+#    CC             C  ###########   CC              CTTC#
+#         C         T  ###########                       #
+#       CTTTC   CC  T  ###########                       #
+#   CTTCCTTTC   TT  C  ###########                       #
+#       CTTTC   TT     ###########                       #
+#         C     CC     ###########                       #
+#                      ###########                       #
 ########@#################################################

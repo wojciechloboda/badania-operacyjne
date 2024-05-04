@@ -4,7 +4,7 @@ import random
 from numpy.random import permutation
 from table_placer import does_paths_to_doors_exist, place_table, possible_to_place
 
-def select_table_placment(roomGraph:RoomGraph,table_type:int,orientation:str = None):
+def select_table_placement(roomGraph:RoomGraph,table_type:int,orientation:str = None):
     if orientation is None:
         orientation = random.choice(['h','v'])
     if orientation != 'h' and orientation != 'v':
@@ -17,22 +17,19 @@ def select_table_placment(roomGraph:RoomGraph,table_type:int,orientation:str = N
             new_roomGraph=place_table(roomGraph, table_type, orientation, placement)
             if(does_paths_to_doors_exist(new_roomGraph, placement)):
                 return new_roomGraph
-    print('could not place table')
+    # print('could not place table')
     return roomGraph
 
-
-# print('walls',roomGraph.walls)
-# print('doors',roomGraph.doors)
-# print('restricted',roomGraph.restricted)
-# print(roomGraph.graph)
+def generate_solution(graph, table_types_count):
+    for type, count in table_types_count:
+        for _ in range(count):
+            graph = select_table_placement(graph, type)
+    return graph
 
 if __name__=="__main__":
     for j in range (10):
         print(f"Generating grid numer {j}")
         roomGraph = load_grid('grids_empty/grid1')
-        for i in range(0,10):
-            roomGraph = select_table_placment(roomGraph,1)
-            roomGraph = select_table_placment(roomGraph,2)
-            roomGraph = select_table_placment(roomGraph,3)
+        roomGraph = generate_solution(roomGraph, [(1, 5), (2, 5), (3, 5)])
         save_grid(roomGraph,f'grids_solutions/sol_grid{j}')
         save_table_list(roomGraph.table_list,f'grids_solutions/sol_tlist{j}')

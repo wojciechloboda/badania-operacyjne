@@ -1,19 +1,19 @@
 ##########################################################
-#  C         #####       CC                  C CTTC CTTC #
-#CTTTC       #####C      TT     CTTC  C      T CTTC CTTC #
-#CTTTC CCC   #####T      TT           T      T           #
-#CTTTC TTT   #####T      CC           T   C  C############
-#  C  CTTTC  #####C          C        C CTTTC ############
-#      TTT   #####   CTTC    T     CCC  CTTTC ############
-#      CCC   CTTC    CTTC    T     TTT  CTTTC ############
-#            CTTC            C    CTTTC   C   ############
-#         CCC                 CTTC TTT      C ############
-# CTTC    TTT                 CTTC CCC CC CTTTC          #
-#        CTTTC         ###########     TT CTTTC   CCC    #
-#  CTTC   TTT      CCC ###########     TT CTTTC   TTT    #
-#CC    C  CCC      TTT ###########     CC   C    CTTTC   #
-#TT  CTTTC CC  CC CTTTC###########C               TTT  C #
-#TT  CTTTC TT  TT  TTT ###########T   CTTC        CCC  T #
-#CC  CTTTC TT  TT  CCC ###########T                    T #
-#      C   CC  CC      ###########C                    C #
+#    CCC     #####               C                       #
+#    TTT     #####             CTTTC                     #
+#   CTTTC    #####             CTTTC                     #
+#    TTT     #####       CC    CTTTC          ############
+#    CCC     #####       TT      C    CTTC    ############
+#        CCC #####       TT           CTTC    ############
+#C       TTT             CC                   ############
+#T  CTTCCTTTC                         C       ############
+#T       TTT       C                CTTTC     ############
+#C       CCC       T                CTTTC                #
+#                  T   ###########  CTTTC                #
+#                  C   ###########    C                  #
+#          CTTC   CCC  ###########     C              C  #
+#       CC CTTC   TTT  ###########     T   CTTC       T  #
+#       TT       CTTTC ###########     T   CTTC       T  #
+#       TT        TTT  ###########     C              C  #
+#       CC        CCC  ###########                       #
 ########@#################################################
