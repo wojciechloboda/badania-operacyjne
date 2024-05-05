@@ -5,8 +5,16 @@ from solution_crosser import cross, mutate
 import itertools
 import random
 from time import perf_counter
+import asyncio
 
-def find_solutions(graph, population_size, steps_count, table_specs):
+async def create_new(s1, s2, empty):
+    new_graph = deepcopy(empty)
+    new_graph = cross(s1, s2, new_graph)
+    new_graph = mutate(new_graph)
+    return new_graph
+
+
+async def find_solutions(graph, population_size, steps_count, table_specs):
     population = [deepcopy(graph) for _ in range(population_size)]
     # print("generating initial setups...")
     for i in range(population_size):
@@ -22,12 +30,18 @@ def find_solutions(graph, population_size, steps_count, table_specs):
         start = perf_counter()
 
         random.shuffle(pairs) 
+        tasks = [create_new(population[idx1], population[idx2], graph) for idx1, idx2 in pairs[:population_size//2]]
+        new_graphs = await asyncio.gather(*tasks)
         for i in range(population_size//2):
-            new_graph = deepcopy(graph)
-            idx1, idx2 = pairs[i]
-            new_graph = cross(population[idx1], population[idx2], new_graph)
-            new_graph = mutate(new_graph)
-            population[population_size - 1 - i] = new_graph
+            population[population_size - 1 - i] = new_graphs[i]
+
+
+        # for i in range(population_size//2):
+        #     new_graph = deepcopy(graph)
+        #     idx1, idx2 = pairs[i]
+        #     new_graph = cross(population[idx1], population[idx2], new_graph)
+        #     new_graph = mutate(new_graph)
+        #     population[population_size - 1 - i] = new_graph
         population = sorted(population, key=lambda x: -1 * len(x.chairs))
 
         end = perf_counter()
@@ -42,10 +56,12 @@ def find_solutions(graph, population_size, steps_count, table_specs):
     return stats
 
 
+
+
 if __name__ == '__main__':
     grid = 'grids_empty/grid1'
     graph = load_grid(grid)
-    stats = find_solutions(graph, 10, 10, [(1, 5), (2, 5), (3, 5)])
+    stats = asyncio.run(find_solutions(graph, 10, 10, [(1, 5), (2, 5), (3, 5)]))
     print(stats)
 
 
