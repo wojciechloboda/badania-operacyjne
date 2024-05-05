@@ -5,8 +5,8 @@ def samplegrid(w, h, n):
     return [divmod(i, h) for i in random.sample(range(w * h), n)]
 
 if __name__ == "__main__":
-    N = 100
-    M = 100
+    N = 10
+    M = 10
     grid = [[' ' for _ in range(M)] for _ in range(N) ]
 
     for x, y in samplegrid(M, N, N * M // 8):
@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
     grid[0][1] = '@'
 
-    with open('random_grid', 'w') as file:
+    with open('random_grid10', 'w') as file:
         for row in grid:
             file.write(''.join(row) + '\n')
 
