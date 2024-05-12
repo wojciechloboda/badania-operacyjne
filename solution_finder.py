@@ -7,18 +7,20 @@ import random
 from time import perf_counter
 import asyncio
 
-async def create_new(s1, s2, empty):
+TABLE_SPECS = [(1, 5), (2, 5), (3, 5)]
+
+def create_new(s1, s2, empty):
     new_graph = deepcopy(empty)
     new_graph = cross(s1, s2, new_graph)
     new_graph = mutate(new_graph)
     return new_graph
 
 
-async def find_solutions(graph, population_size, steps_count, table_specs):
+def find_solutions(graph, population_size, steps_count):
     population = [deepcopy(graph) for _ in range(population_size)]
     # print("generating initial setups...")
     for i in range(population_size):
-        population[i] = generate_solution(population[i], table_specs)
+        population[i] = generate_solution(population[i], TABLE_SPECS)
 
     # print("finding solutions...")
     stats = []
@@ -30,27 +32,23 @@ async def find_solutions(graph, population_size, steps_count, table_specs):
         start = perf_counter()
 
         random.shuffle(pairs) 
-        tasks = [create_new(population[idx1], population[idx2], graph) for idx1, idx2 in pairs[:population_size//2]]
-        new_graphs = await asyncio.gather(*tasks)
-        for i in range(population_size//2):
-            population[population_size - 1 - i] = new_graphs[i]
-
-
+        # tasks = [create_new(population[idx1], population[idx2], graph) for idx1, idx2 in pairs[:population_size//2]]
+        # new_graphs = await asyncio.gather(*tasks)
         # for i in range(population_size//2):
-        #     new_graph = deepcopy(graph)
-        #     idx1, idx2 = pairs[i]
-        #     new_graph = cross(population[idx1], population[idx2], new_graph)
-        #     new_graph = mutate(new_graph)
-        #     population[population_size - 1 - i] = new_graph
+        #     population[population_size - 1 - i] = new_graphs[i]
+
+        for i in range(population_size//2):
+            new_graph = deepcopy(graph)
+            idx1, idx2 = pairs[i]
+            new_graph = cross(population[idx1], population[idx2], new_graph)
+            new_graph = mutate(new_graph)
+            population[population_size - 1 - i] = new_graph
         population = sorted(population, key=lambda x: -1 * len(x.chairs))
 
         end = perf_counter()
         time = end - start
 
-        print("-------------------------------------------------------------------")  
-        print(f"step {s} took {time:.2f}s")
-        print(f"best solution: {len(population[0].chairs)}")
-        print("-------------------------------------------------------------------")
+        print(f"epoch {s + 1} took {time:.2f}s | best solution: {len(population[0].chairs)} chairs")
         stats.append({"best": population[0], "time": time})
 
     return stats

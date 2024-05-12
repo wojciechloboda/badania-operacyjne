@@ -25,7 +25,7 @@ def does_paths_to_doors_exist(roomGraph:RoomGraph, placement):
         distances = BFS(roomGraph.graph,door)
         for chair in roomGraph.chairs:
             if distances[chair] == float('inf'):
-                print('for placment: ',placement,'no path to: ',chair)
+                # print('for placment: ',placement,'no path to: ',chair)
                 return False
     return True
 

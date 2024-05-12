@@ -28,7 +28,7 @@ def generate_solution(graph, table_types_count):
 
 if __name__=="__main__":
     for j in range (10):
-        print(f"Generating grid numer {j}")
+        # print(f"Generating grid numer {j}")
         roomGraph = load_grid('grids_empty/grid1')
         roomGraph = generate_solution(roomGraph, [(1, 5), (2, 5), (3, 5)])
         save_grid(roomGraph,f'grids_solutions/sol_grid{j}')
